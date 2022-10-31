@@ -1,0 +1,17 @@
+{
+    "name": "iems/iems-wp-plugin",
+    "description": "IEMS Client",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Mantas Kryzevicius",
+            "email": "mantas.kryzevicius@stud.svako.lt"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Inc\\": "./inc"
+        }
+    }
+}
