@@ -20,13 +20,13 @@ class UserShortcodes extends BaseController
 
 			foreach ($this->entries as $element) {
 				if ($element['id'] == $id) {
-					$entrie = $element;
+					$entry = $element;
 					break;
 				}
 			}
 
-			if ($entrie) {
-				return $entrie['value'];
+			if ($entry) {
+				return $entry['value'];
 			}
 		}
 

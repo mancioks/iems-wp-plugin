@@ -25,7 +25,7 @@ require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
 define('IEMS_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('IEMS_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('IEMS_BASENAME', plugin_basename(__FILE__));
-define('IEMS_ENDPOINT', 'http://localhost:8000/api/entry');
+define('IEMS_ENDPOINT', 'http://localhost:8000/api/init');
 
 function activate_iems_plugin() {
 	\Inc\Base\Activate::activate();
