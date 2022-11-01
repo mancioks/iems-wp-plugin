@@ -22,9 +22,20 @@ if (!defined('ABSPATH')) {
 
 require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
 
-define('PLUGIN_PATH', plugin_dir_path(__FILE__));
-define('PLUGIN_URL', plugin_dir_url(__FILE__));
-define('BASENAME', plugin_basename(__FILE__));
+define('IEMS_PLUGIN_PATH', plugin_dir_path(__FILE__));
+define('IEMS_PLUGIN_URL', plugin_dir_url(__FILE__));
+define('IEMS_BASENAME', plugin_basename(__FILE__));
+
+function activate_iems_plugin() {
+	\Inc\Base\Activate::activate();
+}
+
+function deactivate_iems_plugin() {
+	\Inc\Base\Deactivate::deactivate();
+}
+
+register_activation_hook(__FILE__, 'activate_iems_plugin');
+register_deactivation_hook(__FILE__, 'deactivate_iems_plugin');
 
 if (class_exists('Inc\\Init')) {
 	Inc\Init::register_services();

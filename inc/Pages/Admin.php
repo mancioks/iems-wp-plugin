@@ -2,37 +2,45 @@
 
 namespace Inc\Pages;
 
-class Admin
+use Inc\Api\SettingsApi;
+use Inc\Base\BaseController;
+
+class Admin extends BaseController
 {
+	public $settings;
+
+	public function __construct()
+	{
+		parent::__construct();
+
+		$this->settings = new SettingsApi();
+	}
+
 	public function register()
 	{
-		add_action('admin_menu', [$this, 'add_admin_pages']);
-		add_filter('plugin_action_links_' . BASENAME, [$this, 'settings_link']);
-	}
+		$pages = [
+			[
+				'page_title' => 'IEMS admin',
+				'menu_title' => 'IEMS admin',
+				'capability' => 'manage_options',
+				'menu_slug' => 'iems_plugin',
+				'callback' => function() {$this->render('admin');},
+				'icon_url' => 'dashicons-cloud-saved',
+				'position' => 100
+			]
+		];
 
-	public function settings_link($links)
-	{
-		$settings_link = '<a href="admin.php?page=iems_plugin">Settings</a>';
-		$links[] = $settings_link;
+		$subPages = [
+			[
+				'parent_slug' => 'iems_plugin',
+				'page_title' => 'Entities',
+				'menu_title' => 'Entities',
+				'capability' => 'manage_options',
+				'menu_slug' => 'iems_entities',
+				'callback' => function() {$this->render('entities');},
+			]
+		];
 
-		return $links;
-	}
-
-	public function add_admin_pages()
-	{
-		add_menu_page(
-			'IEMS admin',
-			'IEMS admin',
-			'manage_options',
-			'iems_plugin',
-			[$this, 'admin_index'],
-			'',
-			null
-		);
-	}
-
-	public function admin_index()
-	{
-		require_once PLUGIN_PATH . 'templates/admin.php';
+		$this->settings->addPages($pages)->addSubPages($subPages)->register();
 	}
 }

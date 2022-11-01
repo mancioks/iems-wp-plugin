@@ -9,6 +9,7 @@ final class Init
 		return [
 			Pages\Admin::class,
 			Base\Assets::class,
+			Base\SettingsLinks::class,
 		];
 	}
 
