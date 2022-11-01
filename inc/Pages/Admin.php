@@ -8,7 +8,7 @@ use Inc\Base\BaseController;
 
 class Admin extends BaseController
 {
-	public SettingsApi $settings;
+	public $settings;
 	public $pages;
 	public $subPages;
 	public $callbacks;
