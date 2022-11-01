@@ -2,6 +2,9 @@
 
 namespace Inc;
 
+use Inc\Api\IemsApi;
+use Inc\Shortcodes\UserShortcodes;
+
 final class Init
 {
 	public static function get_services()
@@ -10,6 +13,8 @@ final class Init
 			Pages\Admin::class,
 			Base\Assets::class,
 			Base\SettingsLinks::class,
+			UserShortcodes::class,
+			IemsApi::class,
 		];
 	}
 
