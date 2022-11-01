@@ -25,7 +25,12 @@ require_once plugin_dir_path(__FILE__) . 'vendor/autoload.php';
 define('IEMS_PLUGIN_PATH', plugin_dir_path(__FILE__));
 define('IEMS_PLUGIN_URL', plugin_dir_url(__FILE__));
 define('IEMS_BASENAME', plugin_basename(__FILE__));
-define('IEMS_ENDPOINT', 'http://localhost:8000/api/init');
+
+if (defined('WP_ENVIRONMENT_TYPE') && WP_ENVIRONMENT_TYPE === 'local') {
+	define('IEMS_ENDPOINT', 'http://localhost:8000/api/init');
+} else {
+	define('IEMS_ENDPOINT', 'https://iems.bnvi.lt/api/init');
+}
 
 function activate_iems_plugin() {
 	\Inc\Base\Activate::activate();
