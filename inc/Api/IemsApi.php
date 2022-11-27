@@ -33,6 +33,10 @@ class IemsApi extends BaseController
 
 		update_option('iems_entries', $body);
 
+		if (has_action('litespeed_purge_all')) {
+			do_action('litespeed_purge_all');
+		}
+
 		return [
 			'status' => 'success',
 			'message' => 'updated',
