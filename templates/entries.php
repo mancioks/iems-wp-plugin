@@ -7,6 +7,7 @@
                 <th>Key</th>
                 <th>Type</th>
                 <th>Value</th>
+                <th>Translations</th>
                 <th>Shortcode</th>
             </tr>
             </thead>
@@ -18,7 +19,19 @@
                         <td><?= $entry['type'] ?></td>
                         <td><?= $entry['value'] ?></td>
                         <td>
-                            <code style="cursor: pointer;" onclick="navigator.clipboard.writeText('[iems id=<?= $entry['id'] ?>]')">
+                            <?php foreach ($entry['translations'] as $language => $translation): ?>
+                                <div style="border: 1px solid #ddd; padding: 5px; box-shadow: 0 0 10px 0px rgb(0 0 0 / 10%);border-radius: 5px;margin-bottom: 5px;">
+                                    <img
+                                            src="https://countryflagsapi.com/svg/<?= $language === 'en' ? 'us' : $language ?>"
+                                            height="12"
+                                            alt="<?= $language ?>"
+                                    />
+                                    <?= $translation ?>
+                                </div>
+                            <?php endforeach; ?>
+                        </td>
+                        <td>
+                            <code style="cursor: pointer !important;" onclick="navigator.clipboard.writeText('[iems id=<?= $entry['id'] ?>]')">
                                 [iems id=<?= $entry['id'] ?>]
                             </code>
                         </td>

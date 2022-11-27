@@ -18,6 +18,22 @@ class IemsApi extends BaseController
 				]
 			);
 		});
+
+		add_action('rest_api_init', function () {
+			register_rest_route(
+				'api',
+				'iems/entries',
+				[
+					'methods' => 'GET',
+					'callback' => [$this, 'apiEntriesCallback']
+				]
+			);
+		});
+	}
+
+	public function apiEntriesCallback()
+	{
+		return $this->entries;
 	}
 
 	public function apiCallback(\WP_REST_Request $request)

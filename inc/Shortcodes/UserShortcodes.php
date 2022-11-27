@@ -13,6 +13,8 @@ class UserShortcodes extends BaseController
 
 	public function iemsUserShortcode($atts = array(), $content = null, $tag = '')
 	{
+		$locale = substr(get_locale(), 0, 2);
+
 		if (isset($atts['id'])) {
 
 			$id = $atts['id'];
@@ -26,7 +28,16 @@ class UserShortcodes extends BaseController
 			}
 
 			if ($entry) {
-				return $entry['value'];
+				$value = $entry['value'];
+
+				foreach ($entry['translations'] as $language => $translation) {
+					if ($language == $locale) {
+						$value = $translation;
+						break;
+					}
+				}
+
+				return $value;
 			}
 		}
 
