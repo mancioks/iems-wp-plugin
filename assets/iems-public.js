@@ -12,8 +12,10 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function replaceHtml(bodyHtml, entries) {
-    bodyHtml = bodyHtml.replace(/\[iems id=\d+\]/g, function(match) {
-        let id = match.match(/\d+/)[0];
+    // bodyHtml = bodyHtml.replace(/\[iems id=\d+\]/g, function(match) {
+    bodyHtml = bodyHtml.replace(/\[iems(.+?)?]/g, function(match) {
+        // let id = match.match(/\d+/)[0];
+        let id = match.match(/id=(\d+)/)[1];
         for (let key in entries) {
             if (entries[key].id == id) {
                 let entry = entries[key];
