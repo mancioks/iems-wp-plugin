@@ -1,4 +1,4 @@
-const entries = getEntries();
+const entries = JSON.parse(IEMS_OPTIONS.entries);
 
 document.addEventListener('DOMContentLoaded', function() {
     let bodyHtml = document.body.innerHTML;
@@ -22,7 +22,7 @@ function replaceHtml(bodyHtml, entries) {
                 // foreach translations
                 for (let key in entry.translations) {
                     let translation = entry.translations[key];
-                    if (key == IEMSURLS.locale) {
+                    if (key == IEMS_OPTIONS.locale) {
                         value = translation;
                     }
                 }

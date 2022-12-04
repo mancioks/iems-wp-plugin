@@ -19,8 +19,8 @@ class Assets extends BaseController
 	public function publicAssets()
 	{
 		wp_enqueue_script('iems-public-script', $this->pluginUrl . 'assets/iems-public.js');
-		wp_localize_script('iems-public-script', 'IEMSURLS', [
-			'entries' => rest_url('api/iems/entries'),
+		wp_localize_script('iems-public-script', 'IEMS_OPTIONS', [
+			'entries' => json_encode($this->entries),
 			'locale' => substr(get_locale(), 0, 2),
 		]);
 	}
