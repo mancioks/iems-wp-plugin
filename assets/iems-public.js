@@ -32,6 +32,8 @@ function replaceHtml(bodyHtml, entries) {
                 return value;
             }
         }
+
+        return '';
     });
 
     return bodyHtml;
