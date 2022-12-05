@@ -17,15 +17,22 @@
                     <tr>
                         <td><?= $entry['id'] ?></td>
                         <td><?= $entry['type'] ?></td>
-                        <td><?= $entry['value'] ?></td>
+                        <td>
+                            Original
+                            <div class="iems-entry-value">
+	                            <?= $entry['value'] ?>
+                            </div>
+                        </td>
                         <td>
                             <?php foreach ($entry['translations'] as $language => $translation): ?>
-                                <div style="border: 1px solid #ddd; padding: 5px; box-shadow: 0 0 10px 0px rgb(0 0 0 / 10%);border-radius: 5px;margin-bottom: 5px;">
-                                    <img
-                                            src="https://countryflagsapi.com/svg/<?= $language === 'en' ? 'us' : $language ?>"
-                                            height="12"
-                                            alt="<?= $language ?>"
-                                    />
+                                <img
+                                        src="https://www.countryflagicons.com/FLAT/16/<?= strtoupper($language === 'en' ? 'us' : $language) ?>.png"
+                                        height="16"
+                                        style="margin-bottom: -4px;"
+                                        alt="<?= $language ?>"
+                                />
+	                            <?= strtoupper($language === 'en' ? 'us' : $language) ?>
+                                <div class="iems-entry-value" style="margin-bottom: 10px;">
                                     <?= $translation ?>
                                 </div>
                             <?php endforeach; ?>

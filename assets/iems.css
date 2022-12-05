@@ -1,0 +1,11 @@
+.iems-entry-value {
+    border: 1px solid #ddd;
+    padding: 5px;
+    box-shadow: 0 0 10px 0px rgb(0 0 0 / 10%);
+    border-radius: 5px;
+    margin-top:4px;
+}
+.iems-entry-value img {
+    max-width: 100%;
+    height: auto;
+}
