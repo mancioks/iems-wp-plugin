@@ -3,6 +3,7 @@
 namespace Inc\Api;
 
 use Inc\Base\BaseController;
+use Inc\Services\IemsService;
 
 class IemsApi extends BaseController
 {
@@ -49,9 +50,7 @@ class IemsApi extends BaseController
 
 		update_option('iems_entries', $body);
 
-		if (has_action('litespeed_purge_all')) {
-			do_action('litespeed_purge_all');
-		}
+		IemsService::cacheClear();
 
 		return [
 			'status' => 'success',

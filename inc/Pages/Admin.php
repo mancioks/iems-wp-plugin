@@ -66,10 +66,15 @@ class Admin extends BaseController
 				'option_name' => 'iems_endpoint',
 				'callback' => [$this->callbacks, 'iemsEndpointInput']
 			],
+//			[
+//				'option_group' => 'iems_options',
+//				'option_name' => 'iems_entries',
+//				'callback' => [$this->callbacks, 'iemsEntriesInput']
+//			],
 			[
 				'option_group' => 'iems_options',
-				'option_name' => 'iems_entries',
-				'callback' => [$this->callbacks, 'iemsEntriesInput']
+				'option_name' => 'iems_js_parser',
+				'callback' => [$this->callbacks, 'iemsJsParserInput']
 			],
 		];
 
@@ -103,14 +108,24 @@ class Admin extends BaseController
 					'label_for' => 'iems_endpoint',
 				],
 			],
+//			[
+//				'id' => 'iems_entries',
+//				'title' => 'IEMS entries',
+//				'callback' => [$this->callbacks, 'iemsEntriesField'],
+//				'page' => 'iems_plugin',
+//				'section' => 'iems_admin_index',
+//				'args' => [
+//					'label_for' => 'iems_entries',
+//				],
+//			],
 			[
-				'id' => 'iems_entries',
-				'title' => 'IEMS entries',
-				'callback' => [$this->callbacks, 'iemsEntriesField'],
+				'id' => 'iems_js_parser',
+				'title' => 'IEMS JS parser',
+				'callback' => [$this->callbacks, 'iemsJsParserField'],
 				'page' => 'iems_plugin',
 				'section' => 'iems_admin_index',
 				'args' => [
-					'label_for' => 'iems_entries',
+					'label_for' => 'iems_js_parser',
 				],
 			],
 		];

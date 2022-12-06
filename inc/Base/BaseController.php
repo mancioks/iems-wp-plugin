@@ -8,6 +8,7 @@ class BaseController implements BaseControllerInterface
 	public $pluginUrl;
 	public $baseName;
 	public $entries;
+	public $parseWithJs;
 
 	public function __construct()
 	{
@@ -15,6 +16,7 @@ class BaseController implements BaseControllerInterface
 		$this->pluginUrl = IEMS_PLUGIN_URL;
 		$this->baseName = IEMS_BASENAME;
 		$this->entries = $this->getEntries();
+		$this->parseWithJs = $this->isParseByJsEnabled();
 	}
 
 	private function getEntries()
@@ -22,6 +24,13 @@ class BaseController implements BaseControllerInterface
 		$entries = json_decode(get_option('iems_entries'), true);
 
 		return $entries['entries'];
+	}
+
+	private function isParseByJsEnabled()
+	{
+		$parseByJs = json_decode(get_option('iems_js_parser'), true);
+
+		return $parseByJs == 1;
 	}
 
 	public function register() { }

@@ -7,7 +7,10 @@ class Assets extends BaseController
 	public function register()
 	{
 		add_action('admin_enqueue_scripts', [$this, 'assets']);
-		add_action('wp_enqueue_scripts', [$this, 'publicAssets']);
+
+		if ($this->parseWithJs) {
+			add_action('wp_enqueue_scripts', [$this, 'publicAssets']);
+		}
 	}
 
 	public function assets()

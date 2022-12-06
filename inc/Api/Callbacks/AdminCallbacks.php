@@ -27,6 +27,11 @@ class AdminCallbacks extends BaseController
 		return $input;
 	}
 
+	public function iemsJsParserInput($input)
+	{
+		return $input;
+	}
+
 	public function iemsAdminSection()
 	{
 		echo 'IEMS Client';
@@ -43,5 +48,18 @@ class AdminCallbacks extends BaseController
 	{
 		$value = esc_attr(get_option('iems_entries'));
 		echo '<textarea type="text" class="regular-text code" rows="8" name="iems_entries" id="iems_entries" placeholder="IEMS entries">'. $value .'</textarea>';
+	}
+
+	public function iemsJsParserField()
+	{
+		$value = esc_attr(get_option('iems_js_parser'));
+
+		if ($value == 1) {
+			$checked = 'checked';
+		} else {
+			$checked = '';
+		}
+
+		echo '<input type="checkbox" name="iems_js_parser" id="iems_js_parser" value="1" '. $checked .'>';
 	}
 }

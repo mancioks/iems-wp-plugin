@@ -2,6 +2,8 @@
 
 namespace Inc\Api;
 
+use Inc\Services\IemsService;
+
 class SettingsApi
 {
 	public $admin_pages = [];
@@ -38,6 +40,8 @@ class SettingsApi
 	public function setSettings(array $settings)
 	{
 		$this->settings = $settings;
+
+		IemsService::cacheClear();
 
 		return $this;
 	}
