@@ -23,7 +23,7 @@ class BaseController implements BaseControllerInterface
 	{
 		$entries = json_decode(get_option('iems_entries'), true);
 
-		return $entries['entries'];
+		return $entries['entries'] ?? [];
 	}
 
 	private function isParseByJsEnabled()
