@@ -29,7 +29,7 @@ define('IEMS_BASENAME', plugin_basename(__FILE__));
 if (defined('WP_ENVIRONMENT_TYPE') && WP_ENVIRONMENT_TYPE === 'local') {
 	define('IEMS_ENDPOINT', 'http://localhost:8000/api/init');
 } else {
-	define('IEMS_ENDPOINT', 'https://iems.bnvi.lt/api/init');
+	define('IEMS_ENDPOINT', 'https://iems.stud.svako.lt/api/init');
 }
 
 function activate_iems_plugin() {
